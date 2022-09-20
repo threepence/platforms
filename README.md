@@ -1,3 +1,10 @@
+
+# TODOs
+
+- [ ] `imageBlurhash` is returned as `''` only for post settings and only when running locally (deployed is fine).
+ 
+---
+
 <p align="center">
   <a href="https://demo.vercel.pub">
     <img src="https://assets.vercel.com/image/upload/v1588805858/repositories/vercel/logo.png" height="96">
