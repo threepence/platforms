@@ -1,4 +1,7 @@
 import remarkMdx from "remark-mdx";
+import rehypeMathjax from 'rehype-mathjax' // Render math with MathJax.
+import remarkMath from 'remark-math' // Support math like `$so$`.
+
 import { MDXRemote } from "next-mdx-remote";
 import { remark } from "remark";
 import { serialize } from "next-mdx-remote/serialize";
@@ -294,7 +297,12 @@ async function getMdxSource(postContents: string) {
   const contentHtml = String(processedContent);
 
   // Serialize the content string into MDX
-  const mdxSource = await serialize(contentHtml);
+  const mdxSource = await serialize(postContents, {
+    mdxOptions: {
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [rehypeMathjax]
+    }
+  });
 
   return mdxSource;
 }

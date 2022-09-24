@@ -1,8 +1,14 @@
 
 # TODOs
 
-- [ ] `imageBlurhash` is returned as `''` only for post settings and only when running locally (deployed is fine).
- 
+- [ ] Add static rendering of $\LaTeX$. See [MDX guide](https://mdxjs.com/guides/math/)
+- [ ] How to allow for a hierarchy of sites? That is, you'd like to have an overall "editor" role for a site and then give people "contributor" roles for subdomains. There are different ways to do this: a natural one is for a contributor to set up their own site and then an editor to "syndicate" the site to their own, publishing it under their own domain. This would be done by mutual agreement. 
+- [ ] [remark-mdx-math-enhanced](https://github.com/goodproblems/remark-mdx-math-enhanced) looks like a way in which one could dynamically generate questions. 
+- [ ] In general, is MDX a good way to load dynamic content see e.g. [mdx-bundler](https://github.com/kentcdodds/mdx-bundler)
+- [ ] [useScript](https://usehooks-ts.com/react-hook/use-script) to load scripts in a page
+- [ ] [This discussion](https://github.com/vercel/platforms/discussions/145) suggests that there is currently no check that a user owns a page before a call to delete.
+- [ ] [Feature suggested here](https://kevquirk.com/my-blogging-utopia/). Shortcut to add a link to another page on your block.
+
 ---
 
 <p align="center">
