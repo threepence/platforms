@@ -1,7 +1,7 @@
 
 # TODOs
 
-- [ ] Add static rendering of $\LaTeX$. See [MDX guide](https://mdxjs.com/guides/math/)
+- [X] Add static rendering of $\LaTeX$. See [MDX guide](https://mdxjs.com/guides/math/). In fact it turns out to be better to do this with [better-react-mathjax](https://github.com/fast-reflexes/better-react-mathjax) after processing the MDX to HTML. Full MathJax config is available in `pages/_app.tsx`.
 - [ ] How to allow for a hierarchy of sites? That is, you'd like to have an overall "editor" role for a site and then give people "contributor" roles for subdomains. There are different ways to do this: a natural one is for a contributor to set up their own site and then an editor to "syndicate" the site to their own, publishing it under their own domain. This would be done by mutual agreement. 
 - [ ] [remark-mdx-math-enhanced](https://github.com/goodproblems/remark-mdx-math-enhanced) looks like a way in which one could dynamically generate questions. 
 - [ ] In general, is MDX a good way to load dynamic content see e.g. [mdx-bundler](https://github.com/kentcdodds/mdx-bundler)

@@ -1,6 +1,5 @@
 import remarkMdx from "remark-mdx";
-import rehypeMathjax from 'rehype-mathjax' // Render math with MathJax.
-import remarkMath from 'remark-math' // Support math like `$so$`.
+import { MathJax } from "better-react-mathjax";
 
 import { MDXRemote } from "next-mdx-remote";
 import { remark } from "remark";
@@ -128,7 +127,9 @@ export default function Post({
       </div>
 
       <article className="w-11/12 sm:w-3/4 m-auto prose prose-md sm:prose-lg">
-        <MDXRemote {...data.mdxSource} components={components} />
+        <MathJax>
+          <MDXRemote {...data.mdxSource} components={components} />
+        </MathJax>
       </article>
 
       {adjacentPosts.length > 0 && (
@@ -297,12 +298,7 @@ async function getMdxSource(postContents: string) {
   const contentHtml = String(processedContent);
 
   // Serialize the content string into MDX
-  const mdxSource = await serialize(postContents, {
-    mdxOptions: {
-      remarkPlugins: [remarkMath],
-      rehypePlugins: [rehypeMathjax]
-    }
-  });
+  const mdxSource = await serialize(contentHtml);
 
   return mdxSource;
 }
