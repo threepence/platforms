@@ -2,12 +2,27 @@
 # TODOs
 
 - [X] Add static rendering of $\LaTeX$. See [MDX guide](https://mdxjs.com/guides/math/). In fact it turns out to be better to do this with [better-react-mathjax](https://github.com/fast-reflexes/better-react-mathjax) after processing the MDX to HTML. Full MathJax config is available in `pages/_app.tsx`.
-- [ ] How to allow for a hierarchy of sites? That is, you'd like to have an overall "editor" role for a site and then give people "contributor" roles for subdomains. There are different ways to do this: a natural one is for a contributor to set up their own site and then an editor to "syndicate" the site to their own, publishing it under their own domain. This would be done by mutual agreement. 
+- [ ] Modify site page to give site description as well as link to first post
+- [ ] Upload of a site including Pandoc conversion
+- [ ] Build a site from a GH repo containing markdown files and images (c.f. Hashnode). I feel that this can be a one-way process. If you're happy using a repo you're probably happy to update it and see the results come through on the blog, and not worry about editing. I suppose you *may* want to have a single title page that you edit in the browser, though.
+- [ ] How should syndication work? We should have a level called a *Portfolio* of sites. The owner of the portfolio can give editing rights of the constituent sites to users. They can also syndicate another site (by mutual agreement) to one of their sites. This is designed to allow an admin to set up a bunch of sites (for a set of courses, say), and then send invitations to users (unique query string in the url with email verification?) to edit the portfolio site and connect their own site to it, meaning that posts to their site show up in the portfolio site. In this way somebody could add a course description to the portfolio site but then handle the bulk of the material by connecting a github repo, say. If they later disconnect their site, the course description will remain. You could give admins the option of approving publication or allowing it to be automatic. **Portfolio sites should be a paid feature**.
+- [ ] Students should be able to follow site (courses) so that recent posts are shown when they log in to `threepence.org`
+- [ ] How to handle invites? [Some ideas](https://loige.co/invite-only-microsites-with-nextjs-and-airtable/) 
+- Could borrow the [Sandbox](https://github.com/markdoc/docs/blob/main/components/Sandbox.js) from the markdoc docs as an editor.
+- Here's another editor using [React SimpleMDE](https://giftea.hashnode.dev/configure-the-react-simplemde-markdown-editor-to-allow-for-image-upload-by-drag-and-drop-and-copy-and-paste). Perhaps [this one](https://github.com/HarryChen0506/react-markdown-editor-lite) is best (lightweight)?
+- [Here's how](https://joebell.co.uk/blog/updating-static-next-js-pages-instantly) to ensure ISR works well for the user making the edits. Maybe this is already how platforms behaves?
+- [ ] How to allow for a hierarchy of sites? That is, you'd like to have an overall "editor" role for a site and then give people "contrdibutor" roles for subdomains. There are different ways to do this: a natural one is for a contributor to set up their own site and then an editor to "syndicate" the site to their own, publishing it under their own domain. This would be done by mutual agreement. 
 - [ ] [remark-mdx-math-enhanced](https://github.com/goodproblems/remark-mdx-math-enhanced) looks like a way in which one could dynamically generate questions. 
-- [ ] In general, is MDX a good way to load dynamic content see e.g. [mdx-bundler](https://github.com/kentcdodds/mdx-bundler)
+- [ ] In general, is MDX a good way to load dynamic content see e.g. [mdx-bundler](https://github.com/kentcdodds/mdx-bundler)? Might be better to use [Markdoc](https://markdoc.dev/)
 - [ ] [useScript](https://usehooks-ts.com/react-hook/use-script) to load scripts in a page
 - [ ] [This discussion](https://github.com/vercel/platforms/discussions/145) suggests that there is currently no check that a user owns a page before a call to delete.
 - [ ] [Feature suggested here](https://kevquirk.com/my-blogging-utopia/). Shortcut to add a link to another page on your block.
+- [ ] Try [Prisma Studio](https://www.prisma.io/studio) for visualization of data
+
+From Execute Program:
+
+>When consuming data from APIs, we recommend using a library like `runtypes` or `io-ts`. These libraries allow us to define static TypeScript types, but also check data against them at runtime. If the data doesn't match, we can handle that error case immediately rather than having incorrect data flow through the system. However, we don't recommend exploring these libraries until you've finished this course.
+  
 
 ---
 

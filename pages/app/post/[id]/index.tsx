@@ -5,6 +5,17 @@ import { useDebounce } from "use-debounce";
 import { useRouter } from "next/router";
 import { useState, useEffect, useCallback } from "react";
 
+import dynamic from 'next/dynamic';
+import 'react-markdown-editor-lite/lib/index.css';
+
+import { unified } from "unified";
+import remarkParse from 'remark-parse'
+import remarkRehype from 'remark-rehype'
+import rehypeStringify from 'rehype-stringify'
+import rehypeSanitize from 'rehype-sanitize'
+
+import { MathJax } from "better-react-mathjax";
+
 import Layout from "@/components/app/Layout";
 import Loader from "@/components/app/Loader";
 import LoadingDots from "@/components/app/loading-dots";
@@ -15,10 +26,25 @@ import type { ChangeEvent } from "react";
 
 import type { WithSitePost } from "@/types";
 
+
 interface PostData {
   title: string;
   description: string;
   content: string;
+}
+
+const MdEditor = dynamic(() => import('react-markdown-editor-lite'), {
+  ssr: false,
+});
+
+const mdParser = async (postContents: string) => {
+  const out =  await unified()
+    .use(remarkParse)
+    .use(remarkRehype)
+    .use(rehypeSanitize)
+    .use(rehypeStringify)
+    .process(postContents);
+  return String(out)
 }
 
 const CONTENT_PLACEHOLDER = `Write some content. Markdown supported:
@@ -245,7 +271,20 @@ export default function Post() {
               <div className="w-full border-t border-gray-300" />
             </div>
           </div>
-          <TextareaAutosize
+          <MathJax>
+            <MdEditor 
+              style={{ height: '500px' }} 
+              renderHTML={mdParser}
+              onChange={({text, html}, e) => 
+                setData({
+                  ...data,
+                  content: text,
+                })
+              }
+              value={data.content}
+            />;
+          </MathJax>
+          {/* <TextareaAutosize
             name="content"
             onInput={(e: ChangeEvent<HTMLTextAreaElement>) =>
               setData({
@@ -256,7 +295,7 @@ export default function Post() {
             className="w-full px-2 py-3 text-gray-800 placeholder-gray-400 text-lg mb-5 resize-none border-none focus:outline-none focus:ring-0"
             placeholder={CONTENT_PLACEHOLDER}
             value={data.content}
-          />
+          /> */}
         </div>
         <footer className="h-20 z-5 fixed bottom-0 inset-x-0 border-solid border-t border-gray-500 bg-white">
           <div className="max-w-screen-xl mx-auto px-10 sm:px-20 h-full flex justify-between items-center">
