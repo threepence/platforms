@@ -271,6 +271,9 @@ export default function Post() {
               <div className="w-full border-t border-gray-300" />
             </div>
           </div>
+          {/* It would  be nice to include the MathJax component in the 
+          renderHTML function but since mdParser returns promise and won't render
+          https://stackoverflow.com/questions/47658765/objects-are-not-valid-as-a-react-child-found-object-promise */}
           <MathJax>
             <MdEditor 
               style={{ height: '500px' }} 
